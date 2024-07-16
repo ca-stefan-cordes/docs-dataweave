@@ -81,7 +81,7 @@ Note that simplified forms are only for convenience. You can use the `segments` 
 
 If you are working with multiple types of records in the same transformation, you need to use a structure definition that controls how these different records are combined.
 
-image::dataweave-flat-file-schemas-680c6.png["A a flat file schema with elements and segments"]
+image::dataweave-flat-file-schemas-680c6.png["A flat file schema with elements and segments"]
 
 In most cases, you need to define a way to distinguish between the different types of records. You do this by identifying `tagValue` fields as part of the record definitions. The parser will check the content of the fields of each record to identify the record type, then see how it fits into the defined structure.
 
