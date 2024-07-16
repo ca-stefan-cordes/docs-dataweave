@@ -276,7 +276,7 @@ xref:dataweave-variables.adoc[DataWeave Variables] when you are ready.
 Now try a script that uses the DataWeave `avg` function in a DataWeave
 variable (`myJson`) to get averages of two sets of numbers.
 
-image::dw-tut-script-studio-var.png["DataWeave script using a variable in Anypoint Studio"]
+image::dw-tut-script-studio-var.png["A DataWeave script using a variable in Anypoint Studio"]
 
 . Replace the current script in the source code area with this one:
 +
