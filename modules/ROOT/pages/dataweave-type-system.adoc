@@ -426,5 +426,6 @@ You can declare and use types within the same DataWeave script (see xref:datawea
 * xref:dataweave-type-reuse-json-schema.adoc[]
 * xref:dataweave-type-reuse-xml-schema.adoc[]
 * xref:dataweave-type-reuse-java-classes.adoc[]
+* xref:dataweave-type-reuse-avro-schema.adoc[]
 
 Module loaders are used to load files as DataWeave modules, in which different parts of those files are loaded as DataWeave functions, variables, types, and namespace definitions. Using a prefix such as `java!` or `xmlschema!` in the import directive tells DataWeave which module loader to use when loading the Java class or the XML schema as a DataWeave module.
