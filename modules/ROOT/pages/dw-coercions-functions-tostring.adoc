@@ -32,7 +32,7 @@ _Introduced in DataWeave version 2.4.0._
 | `locale` | Optional ISO 3166 country code to use, such as `US`,
            `AR`, or `ES`. A `null` or absent value uses your
            JVM default. When you pass a translatable format, such as
-           `eeee` and `MMMM`, a `locale` (such as `"ES`) transforms
+           `eeee` and `MMMM`, a `locale` (such as `ES`) transforms
            the corresponding numeric values to a localized string.
 | `roundMode` | Optional parameter for rounding decimal values
               when the formatting presents a rounding choice,
@@ -138,7 +138,7 @@ _Introduced in DataWeave version 2.4.0._
              or `Time` value to coerce to a `String` type.
 | `format` | The ISO-8601 formatting to use on the date or time.
            For example, this parameter accepts character patterns
-           based on the Java 8 `java.time.format`.
+           patterns based on the Java 8 `java.time.format`.
            A `null` value has no effect on the value. Defaults:
 
 * `Date` example: `2011-12-03` (equivalent format: `uuuu-MM-dd`)
@@ -343,3 +343,4 @@ output application/json
   "b": "hola"
 }
 ----
+

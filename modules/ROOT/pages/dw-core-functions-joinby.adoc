@@ -6,7 +6,7 @@ endif::[]
 
 
 [[joinby1]]
-== joinBy&#40;elements: Array<StringCoerceable&#62;, separator: String&#41;: String
+== joinBy&#40;@StreamCapable elements: Array<StringCoerceable&#62;, separator: String&#41;: String
 
 Merges an array into a single string value and uses the provided string
 as a separator between each item in the list.
