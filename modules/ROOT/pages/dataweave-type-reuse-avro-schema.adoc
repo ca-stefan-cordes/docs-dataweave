@@ -27,7 +27,7 @@ import * from avroschema!example::schema::User
 
 == Use Your Types in a DataWeave Script
 
-The following example uses the Avro schema shown below:
+The following example uses the Avro schema:
 
 .User.json (`example/schema/User.json`)
 [source,JSON]
