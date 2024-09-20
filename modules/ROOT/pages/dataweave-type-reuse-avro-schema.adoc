@@ -75,7 +75,7 @@ import * from avroschema!example::schema::User
 "true"
 ----
 
-The following example outputs the value `false` because the object does not contain the required field `name`:
+The following example outputs the value `false` because the object doesn't contain the required field `name`:
 
 .DataWeave Script:
 [source,dataweave,linenums]
