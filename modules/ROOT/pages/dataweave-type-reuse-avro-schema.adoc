@@ -97,7 +97,7 @@ import * from avroschema!example::schema::User
 
 == Use Named Types Inside Schemas
 
-DataWave generates a separate type for each named type defined in the schema. Named types include records, enums and fixed types.
+DataWeave generates a separate type for each named type defined in the schema. Named types include records, enums, and fixed types.
 
 .Address.json (`example/schema/Address.json`)
 [source,JSON]
