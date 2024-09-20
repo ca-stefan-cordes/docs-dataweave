@@ -44,7 +44,7 @@ The following example uses the Avro schema:
 }
 ----
 
-Including the import directive from the above example in the script header loads all the existing types in the Avro schema. In `import * from avroschema!example::schema::User`, the only existing type is the `User` type, specified at the root which describes an Object that can have four properties (`name`, `email`, `address`, and `telephone`). This is equivalent to declaring the following type in your DataWeave script:
+Including the import directive from the previous example in the script header loads all the existing types in the Avro schema. In `import * from avroschema!example::schema::User`, the only existing type is the `User` type, specified at the root. This type describes an Object with four properties: `name`, `email`, `address`, and, `telephone`. This is equivalent to declaring the following type in your DataWeave script:
 
 .DataWeave Script:
 [source,dataweave,linenums]
