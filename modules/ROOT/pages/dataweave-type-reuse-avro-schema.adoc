@@ -95,7 +95,7 @@ import * from avroschema!example::schema::User
 "false"
 ----
 
-== Use named types inside Schemas
+== Use Named Types Inside Schemas
 
 DataWave generates a separate type for each named type defined in the schema. Named types include records, enums and fixed types.
 
