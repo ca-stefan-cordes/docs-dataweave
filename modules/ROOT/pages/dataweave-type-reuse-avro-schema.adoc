@@ -55,7 +55,7 @@ type User = {| name: String, email: String, address?: Null | String, telephone?:
 
 Notice that `address` and `telephone` are optional fields, as indicated by the `?`.
 
-You can use the type to determine if a value follows the structure defined by the Avro schema.
+You can use the type `User` to determine if a value follows the structure defined by the Avro schema.
 The following example outputs the value `true` because the object contains the required fields, `name` and `email`:
 
 .DataWeave Script:
