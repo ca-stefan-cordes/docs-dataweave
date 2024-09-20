@@ -123,7 +123,7 @@ DataWeave generates a separate type for each named type defined in the schema. N
 }
 ----
 
-You can import the types from that schema with the following directive:
+You can import the types from the previous schema with the following directive:
 
 ----
 import * from avroschema!example::schema::Address
