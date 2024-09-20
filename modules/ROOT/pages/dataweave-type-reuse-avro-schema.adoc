@@ -143,7 +143,7 @@ Use the import directive to import a single type from the schema:
 import Country from avrochema!example::schema::Address
 ----
 
-To avoid type-name collision, you can use the `as` keyword to change the imported type name to another name:
+To avoid a type-name collision, you can use the `as` keyword to change the imported type name to another name:
 
 ----
 import Country as Address_Country from avroschema!example::schema::Address
