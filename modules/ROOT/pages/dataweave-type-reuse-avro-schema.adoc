@@ -1,0 +1,150 @@
+= Reusing Types from an Avro Schema
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+An Avro schema is a formal specification that defines the structure and data types for records stored in the Apache Avro format. The Apache Avro format is a data serialization system commonly used in big data systems like Apache Hadoop and Apache Kafka. The Avro schema ensures that data written in Avro can be easily understood and processed across different systems, regardless of the programming languages or platforms involved.
+
+Avro schemas are defined in JSON data format. You can import Avro schema files (`.json` or `.avsc`) in your DataWeave script as modules by using the `avroschema!` module loader. This loader enables you to use types that are declared in your schema in DataWeave directly.
+DataWeave loads your Avro schema file and translates declarations in your file into DataWeave type directives that you can access in the same way as types from any other DataWeave module. Use the directives to build new types, type-check your variables, match patterns, or declare new functions that use types. DataWeave places no restrictions on how to use these types.
+
+== Import Syntax
+
+To import the types defined by an Avro schema, use the following syntax, where:
+
+* `typeToImport`: Use `*` to import all types defined in the schema, or to import a single type from the schema, for example, `Root`. The schema uses the provided name in the schema for Avro named types like `record` and `enum`. You can also import Avro schema types with a different name, for example, `Root as Country`. You can reference the type with that name in the script.
+* `pathToAvroSchemaFile`: To specify the path to the schema file, replace the file separators with `::` and remove the extension (either `.json` or `.avsc`) from the file name. For example, if the path to the schema is `example/schema/User.json`, use `example::schema::User`.
+
+----
+import _typesToImport_ from avroschema!_pathToAvroSchemaFile_
+----
+
+The following example shows how to import a type:
+
+----
+import * from avroschema!example::schema::User
+----
+
+== Use Your Types in a DataWeave Script
+
+The following example uses the Avro schema:
+
+.User.json (`example/schema/User.json`)
+[source,JSON]
+----
+{
+  "name": "User",
+  "type": "record",
+  "fields": [
+    {"name": "name", "type": "string" },
+    {"name": "email", "type": "string" },
+    {"name": "address", "type": ["null", "string"]},
+    {"name": "telephone", "type": ["null", "string"]}
+  ]
+}
+----
+
+Include the import directive from the previous example in the script header to load the existing types in the Avro schema. In `import * from avroschema!example::schema::User`, the only existing type is the `User` type, specified at the root. This type describes an object with four properties: `name`, `email`, `address`, and `telephone`. This directive is equivalent to declaring the following type in your DataWeave script:
+
+.DataWeave Script:
+[source,dataweave,linenums]
+----
+%dw 2.0
+type User = {| name: String, email: String, address?: Null | String, telephone?: Null | String |}
+----
+
+Notice that `address` and `telephone` are optional fields, as indicated by the `?`.
+
+You can use the type `User` to determine if a value follows the structure defined by the Avro schema.
+The following example outputs the value `true` because the object contains the required fields, `name` and `email`:
+
+.DataWeave Script:
+[source,dataweave,linenums]
+----
+%dw 2.0
+import * from avroschema!example::schema::User
+---
+{
+ name: "John",
+ email: "john@acme.org"
+} is User
+----
+
+.Output:
+----
+"true"
+----
+
+The following example outputs the value `false` because the object doesn't contain the required field `name`:
+
+.DataWeave Script:
+[source,dataweave,linenums]
+----
+%dw 2.0
+import * from avroschema!example::schema::User
+---
+{
+ email: "john@acme.org",
+ address: "123 Evergreen St.",
+ telephone: "555 555 555"
+} is User
+----
+
+.Output:
+----
+"false"
+----
+
+== Use Named Types Inside Schemas
+
+DataWeave generates a separate type for each named type defined in the schema. Named types include records, enums, and fixed types.
+
+.Address.json (`example/schema/Address.json`)
+[source,JSON]
+----
+{
+  "name": "Address",
+  "type": "record",
+  "fields" : [
+    {"name": "city", "type": "string"},
+    {"name": "state", "type": "string"},
+    {
+      "name": "country",
+      "type": {
+        "name": "Country",
+        "type": "record",
+        "fields": [
+          {"name":  "isoCode", "type": "string"},
+          {"name":  "name", "type": "string"}
+        ]
+      }
+    }
+  ]
+}
+----
+
+You can import the types from the previous schema with the following directive:
+
+----
+import * from avroschema!example::schema::Address
+----
+
+The types defined in the schema have the same effect as declaring the following types:
+
+----
+type Address = {| city: String, state: String, country: Country |}
+
+type Country = {| isoCode: String, name: String |}
+----
+
+Use the import directive to import a single type from the schema:
+
+----
+import Country from avrochema!example::schema::Address
+----
+
+To avoid a type-name collision, you can use the `as` keyword to change the imported type name to another name:
+
+----
+import Country as Address_Country from avroschema!example::schema::Address
+----
