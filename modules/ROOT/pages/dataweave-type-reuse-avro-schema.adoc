@@ -12,7 +12,7 @@ DataWeave loads your Avro schema file and translates declarations in your file i
 
 To import the types defined by an Avro schema, use the following syntax, where:
 
-* `typeToImport`: Use `*` to import all types defined in the schema, or to import a single type from the schema, for example, `Root`. For Avro named types like `record` and `enum` the provided name in the schema is used for the type. You can also import Avro schema types with a different name, for example, `Root as Country`. This way you can reference the type with that name in the script.
+* `typeToImport`: Use `*` to import all types defined in the schema, or to import a single type from the schema, for example, `Root`. The schema uses the provided name in the schema for Avro named types like `record` and `enum`. You can also import Avro schema types with a different name, for example, `Root as Country`. You can reference the type with that name in the script.
 * `pathToAvroSchemaFile`: To specify the path to the schema file, replace the file separators with `::` and remove the extension (either `.json` or `.avsc`) from the file name. For example, if the path to the schema is `example/schema/User.json`, use `example::schema::User`.
 
 ----
