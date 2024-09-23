@@ -3,7 +3,7 @@ ifndef::env-site,env-github[]
 include::_attributes.adoc[]
 endif::[]
 
-An Avro schema is a formal specification that defines the structure and data types for records stored in the Apache Avro format, which is a data serialization system commonly used in big data systems like Apache Hadoop and Apache Kafka. It ensures that data written in Avro can be easily understood and processed across different systems, regardless of the programming languages or platforms involved.
+An Avro schema is a formal specification that defines the structure and data types for records stored in the Apache Avro format. The Apache Avro format is a data serialization system commonly used in big data systems like Apache Hadoop and Apache Kafka. The Avro schema ensures that data written in Avro can be easily understood and processed across different systems, regardless of the programming languages or platforms involved.
 
 Avro schemas are defined in JSON data format. You can import Avro schema files (`.json` or `.avsc`) in your DataWeave script as modules by using the `avroschema!` module loader. This loader enables you to use types that are declared in your schema in DataWeave directly.
 DataWeave loads your Avro schema file and translates declarations in your file into DataWeave type directives that you can access in the same way as types from any other DataWeave module. Use the directives to build new types, type-check your variables, match patterns, or declare new functions that use types. DataWeave places no restrictions on how to use these types.
