@@ -83,7 +83,7 @@ _Introduced in DataWeave version 2.3.0._
 
 | Metadata
 | `@Metadata&#40;key: String&#41;`
-| Annotation that can be used to annotate annotations that represent metadata.
+| Annotation used to annotate annotations that represent metadata.
 
 _Introduced in DataWeave version 2.8.0._
 
