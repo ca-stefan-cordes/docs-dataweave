@@ -290,6 +290,17 @@ output application/json
 
 This example updates one of the recurring fields.
 
+==== Source
+
+[source,DataWeave,linenums]
+----
+%dw 2.0
+import * from dw::util::Values
+output application/xml
+---
+payload update ["users", "user", "language"] with (if ($ == "English") "Gibberish" else $)
+----
+
 ==== Input
 
 [source,XML,linenums]
@@ -304,17 +315,6 @@ This example updates one of the recurring fields.
     <language>English</language>
   </user>
 </users>
-----
-
-==== Source
-
-[source,DataWeave,linenums]
-----
-%dw 2.0
-import * from dw::util::Values
-output application/xml
----
-payload update ["users", "user", "language"] with (if ($ == "English") "Gibberish" else $)
 ----
 
 ==== Output

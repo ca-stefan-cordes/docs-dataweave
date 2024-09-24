@@ -1,0 +1,16 @@
+= Bindings (dw::mule::internal::Bindings)
+
+Internal mule module
+
+== Functions
+
+[%header, cols="1,3"]
+|===
+| Name  | Description
+| xref:dw-bindings-functions-callfunction.adoc[callFunction] | Calls a function that was bind in a given namespace with the specified arguments
+| xref:dw-bindings-functions-getdefaultfunctionparametervalue.adoc[getDefaultFunctionParameterValue] | Return the default value of a parameter from the specified function name in the given namespace
+| xref:dw-bindings-functions-getvalue.adoc[getValue] | Returns the value of a given binding
+|===
+
+
+

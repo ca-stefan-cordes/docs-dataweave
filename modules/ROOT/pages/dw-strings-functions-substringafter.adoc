@@ -55,7 +55,7 @@ output application/json
   "c": "c",
   "d": "cba",
   "e": "",
-  "f": "abc"
+  "f": "bc"
 }
 ----
 

@@ -1,0 +1,12 @@
+= getValue
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+
+
+[[getvalue1]]
+== getValue&#40;namespace: String, name: String&#41;
+
+Returns the value of a given binding
+

@@ -1,4 +1,4 @@
-= Mule (dw::Mule)
+= Mule (dw::mule::internal::Mule)
 
 This DataWeave module contains functions for interacting with Mule runtime.
 

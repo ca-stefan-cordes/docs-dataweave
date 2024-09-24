@@ -1,0 +1,12 @@
+= callFunction
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+
+
+
+[[callfunction1]]
+== callFunction&#40;namespace: String, functionName: String, arguments: Array<Any&#62;&#41;
+
+Calls a function that was bind in a given namespace with the specified arguments
+

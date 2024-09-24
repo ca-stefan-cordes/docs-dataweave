@@ -149,9 +149,25 @@ users filter ((item, index) -> item.error == null)
 
 This example reads a JSON array and uses the `filter` function to extract the phone numbers that are active.
 
+==== Source
+
+[source,DataWeave,linenums]
+----
+%dw 2.0
+output application/json
+---
+{
+    id: payload.Id,
+    markCode: payload.marketCode,
+    languageCode: payload.languageCode,
+    username: payload.profile.base.username,
+    phoneNumber: (payload.profile.base.phone filter ($.activeInd == "Y" and $.primaryInd== "Y")).number default []
+}
+----
+
 ==== Input
 
-[source,JSON, linenums]
+[source,JSON,linenums]
 ----
 {
   "Id": "1184001100000000517",
@@ -186,23 +202,9 @@ This example reads a JSON array and uses the `filter` function to extract the ph
  }
 ----
 
-==== Source
-[source,DataWeave, linenums]
-----
-%dw 2.0
-output application/json
----
-{
-    id: payload.Id,
-    markCode: payload.marketCode,
-    languageCode: payload.languageCode,
-    username: payload.profile.base.username,
-    phoneNumber: (payload.profile.base.phone filter ($.activeInd == "Y" and $.primaryInd== "Y")).number default []
-}
-----
-
 ==== Output
-[source,JSON, linenums]
+
+[source,JSON,linenums]
 ----
 {
   "id": "1184001100000000517",
@@ -215,6 +217,7 @@ output application/json
   ]
 }
 ----
+
 
 [[filter2]]
 == filter&#40;@StreamCapable text: String, criteria: &#40;character: String, index: Number&#41; &#45;&#62; Boolean&#41;: String
