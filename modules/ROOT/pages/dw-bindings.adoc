@@ -1,4 +1,4 @@
-= Bindings (dw::mule::internal::Bindings)
+= Bindings (dw::Bindings)
 
 Internal mule module
 
@@ -11,6 +11,3 @@ Internal mule module
 | xref:dw-bindings-functions-getdefaultfunctionparametervalue.adoc[getDefaultFunctionParameterValue] | Return the default value of a parameter from the specified function name in the given namespace
 | xref:dw-bindings-functions-getvalue.adoc[getValue] | Returns the value of a given binding
 |===
-
-
-
