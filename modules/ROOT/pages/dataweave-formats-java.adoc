@@ -260,7 +260,6 @@ output application/json
 ] as Array {class: "java.util.ArrayList<User>"}
 ----
 
-
 [[java_support]]
 == Java Support
 

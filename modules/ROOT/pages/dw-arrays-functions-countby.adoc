@@ -6,7 +6,7 @@ endif::[]
 
 
 [[countby1]]
-== countBy<T&#62;&#40;array: Array<T&#62;, matchingFunction: &#40;T&#41; &#45;&#62; Boolean&#41;: Number
+== countBy<T&#62;&#40;@StreamCapable array: Array<T&#62;, matchingFunction: &#40;T&#41; &#45;&#62; Boolean&#41;: Number
 
 Counts the elements in an array that return `true` when the matching function is applied to the value of each element.
 

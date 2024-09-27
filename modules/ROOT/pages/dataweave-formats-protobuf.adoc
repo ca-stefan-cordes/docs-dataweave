@@ -330,7 +330,6 @@ The DataWeave script outputs a JSON message containing an array of names.
 }
 ----
 
-
 === Unknowns
 
 Protobuf offers capabilities for forward and backward compatibility of protocols. In order
