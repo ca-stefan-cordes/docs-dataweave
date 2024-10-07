@@ -785,6 +785,63 @@ In Mule 4.5, the metadata assignment operator `<~` simplifies the syntax:
 {name: "Ken"} <~ {class: "Person"}
 ----
 
+=== Metadata assignment using Metadata Annotations
+
+Since 2.8 DataWeave added support for Metadata Annotations. These are special annotations markes with `@Metadata` that wherever they are used they attach a key-value pair metadata to that value.
+
+These are defined like this:
+
+[source,weave,linenums]
+----
+%dw 2.8
+
+@Metadata(key="class")
+annotation Class(value: String)
+---
+@Class(value="Person")
+{name: "Ken"}
+----
+
+Here we are achieving the same as the previous example but defining an annotation which is class that bind the metadata key `class` to the value provided where it is used.
+
+Defining metadata using this annotations have some benefits.
+
+* You can define these annotations once and then reuse them as metadata for all your code.
+* These are additive so using more then one will result in attaching all these key-values together.
+* You have type checking so you can force the value of the annotation to be of a certain type achieving consistency.
+
+The definition of Metadata annotations have certain restrictions:
+
+* Annotations marked with @Metadata can only have one parameter.
+* The parameter has to be called value.
+* The metadata key will be the value set to the key argument of the Metadata annotation, not the name of the annotation itself. (In the example the Metadata value is associated to the `class` key)
+* These annotations are additive so using them in a reference of a value that already has metadata defined will end up appending it.
+
+An example of metadata annotation to mark a value as CData for the xml writter.
+
+.Source
+[source,weave,linenums]
+----
+%dw 2.8
+output application/xml
+
+@Metadata(key="cdata")
+annotation CData(value: true)
+---
+root: {
+ test: @CData(value = true) "testCData"
+}
+----
+
+.Output
+[source,xml,linenums]
+----
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <test><![CDATA[testCData]]></test>
+</root>
+----
+
 === Metadata
 
 Metadata is any additional information attached to a value that doesn't affect its identity. Given any two values
