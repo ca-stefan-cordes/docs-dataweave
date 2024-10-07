@@ -785,6 +785,7 @@ In Mule 4.5, the metadata assignment operator `<~` simplifies the syntax:
 {name: "Ken"} <~ {class: "Person"}
 ----
 
+[[metadata-annotations]]
 === Metadata Assignment Using Metadata Annotations
 
 DataWeave adds support for metadata annotations. These special annotations, marked with `@Metadata`, attach a key-value pair metadata to any value where they are used.
