@@ -785,11 +785,13 @@ In Mule 4.5, the metadata assignment operator `<~` simplifies the syntax:
 {name: "Ken"} <~ {class: "Person"}
 ----
 
-=== Metadata assignment using Metadata Annotations
+=== Metadata Assignment Using Metadata Annotations
 
-Since 2.8 DataWeave added support for Metadata Annotations. These are special annotations markes with `@Metadata` that wherever they are used they attach a key-value pair metadata to that value.
+DataWeave adds support for metadata annotations. These special annotations, marked with `@Metadata`, attach a key-value pair metadata to any value where they are used.
 
-These are defined like this:
+_Introduced in DataWeave 2.8.0._
+
+The following example achieves the same result as the previous one, but by defining an annotation, which is a class that binds the metadata key `class` to the value provided where it is used.
 
 [source,weave,linenums]
 ----
@@ -802,22 +804,20 @@ annotation Class(value: String)
 {name: "Ken"}
 ----
 
-Here we are achieving the same as the previous example but defining an annotation which is class that bind the metadata key `class` to the value provided where it is used.
+Defining metadata using annotations provides the following benefits:
 
-Defining metadata using this annotations have some benefits.
+* You can define annotations once and reuse them as metadata throughout your code.
+* Annotations are additive, and using more than one annotation attaches all the key-value pairs together.
+* You get type checking, enabling you to force the value of the annotation to be of a certain type, ensuring consistency.
 
-* You can define these annotations once and then reuse them as metadata for all your code.
-* These are additive so using more then one will result in attaching all these key-values together.
-* You have type checking so you can force the value of the annotation to be of a certain type achieving consistency.
+However, there are certain restrictions when defining metadata annotations:
 
-The definition of Metadata annotations have certain restrictions:
+* Annotations marked with `@Metadata` can only have one parameter.
+* The parameter must be called `value`.
+* The metadata key is the value set to the key argument of the metadata annotation, not the name of the annotation itself (In the previous example, the metadata value is associated to the `class` key).
+* Metadata annotations are additive, so if they are used on a reference that already has metadata, the new metadata is appended.
 
-* Annotations marked with @Metadata can only have one parameter.
-* The parameter has to be called value.
-* The metadata key will be the value set to the key argument of the Metadata annotation, not the name of the annotation itself. (In the example the Metadata value is associated to the `class` key)
-* These annotations are additive so using them in a reference of a value that already has metadata defined will end up appending it.
-
-An example of metadata annotation to mark a value as CData for the xml writter.
+The following is an example of a metadata annotation that marks a value as CData for the XML writter.
 
 .Source
 [source,weave,linenums]
