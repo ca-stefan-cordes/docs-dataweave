@@ -32,7 +32,7 @@ _Introduced in DataWeave version 2.4.0._
 | `locale` | Optional ISO 3166 country code to use, such as `US`,
            `AR`, or `ES`. A `null` or absent value uses your
            JVM default. When you pass a translatable format, such as
-           `eeee` and `MMMM`, a `locale` (such as `"ES`) transforms
+           `eeee` and `MMMM`, a `locale` (such as `ES`) transforms
            the corresponding numeric values to a localized string.
 | `roundMode` | Optional parameter for rounding decimal values
               when the formatting presents a rounding choice,
@@ -149,7 +149,7 @@ _Introduced in DataWeave version 2.4.0._
 | `locale` | Optional ISO 3166 country code to use, such as `US`,
            `AR`, or `ES`. A `null` or absent value uses your
            JVM default. When you pass a translatable format, such as
-           `eeee` and `MMMM`, a `locale` (such as `"ES`) transforms
+           `eeee` and `MMMM`, a `locale` (such as `ES`) transforms
            the corresponding numeric values to a localized string.
 |===
 
@@ -343,3 +343,4 @@ output application/json
   "b": "hola"
 }
 ----
+

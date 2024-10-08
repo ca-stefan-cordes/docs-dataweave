@@ -66,3 +66,4 @@ output application/json
 Helper function that enables `substringAfter` to work with a `null` value.
 
 _Introduced in DataWeave version 2.2.0._
+

@@ -785,6 +785,64 @@ In Mule 4.5, the metadata assignment operator `<~` simplifies the syntax:
 {name: "Ken"} <~ {class: "Person"}
 ----
 
+[[metadata-annotations]]
+=== Metadata Assignment Using Metadata Annotations
+
+DataWeave adds support for metadata annotations. These special annotations, marked with `@Metadata`, attach a key-value pair metadata to any value where they are used.
+
+_Introduced in DataWeave 2.8.0._
+
+The following example achieves the same result as the previous one, but by defining an annotation, which is a class that binds the metadata key `class` to the value provided where it is used.
+
+[source,weave,linenums]
+----
+%dw 2.8
+
+@Metadata(key="class")
+annotation Class(value: String)
+---
+@Class(value="Person")
+{name: "Ken"}
+----
+
+Defining metadata using annotations provides the following benefits:
+
+* You can define annotations once and reuse them as metadata throughout your code.
+* Annotations are additive, and using more than one annotation attaches all the key-value pairs together.
+* You get type checking, enabling you to force the value of the annotation to be of a certain type, ensuring consistency.
+
+However, there are certain restrictions when defining metadata annotations:
+
+* Annotations marked with `@Metadata` can only have one parameter.
+* The parameter must be called `value`.
+* The metadata key is the value set to the key argument of the metadata annotation, not the name of the annotation itself (In the previous example, the metadata value is associated to the `class` key).
+* Metadata annotations are additive, so if they are used on a reference that already has metadata, the new metadata is appended.
+
+The following is an example of a metadata annotation that marks a value as CData for the XML writter.
+
+.Source
+[source,weave,linenums]
+----
+%dw 2.8
+output application/xml
+
+@Metadata(key="cdata")
+annotation CData(value: true)
+---
+root: {
+ test: @CData(value = true) "testCData"
+}
+----
+
+.Output
+[source,xml,linenums]
+----
+<?xml version='1.0' encoding='UTF-8'?>
+<root>
+  <test><![CDATA[testCData]]></test>
+</root>
+----
+
 === Metadata
 
 Metadata is any additional information attached to a value that doesn't affect its identity. Given any two values
